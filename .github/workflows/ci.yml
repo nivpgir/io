@@ -63,6 +63,13 @@ jobs:
           cd build
           sudo make install
 
+      - name: 'Upload Unix build'
+        uses: actions/upload-artifact@v2
+        with:
+          name: unix-build
+          path: build/_build
+          retention-days: 5
+
       - name: Test
         run: |
           cd build
@@ -83,22 +90,22 @@ jobs:
           mkdir build
           cd build
           cmake -G"MinGW Makefiles" ..
-          make
 
       - name: Install
         run: |
           cd build
           make install
+          make
+
+      - name: 'Upload Windows build'
+        uses: actions/upload-artifact@v2
+        with:
+          name: windows-build
+          path: build/_build
+          retention-days: 5
 
       - name: Test
         run: |
           cd build
           & _build/binaries/io_static.exe --% --version
           & _build/binaries/io_static.exe --% ../libs/iovm/tests/correctness/run.io
-
-      - name: 'Upload Windows Build2'
-        uses: actions/upload-artifact@v2
-        with:
-          name: windows-build
-          path: _build
-          retention-days: 5
