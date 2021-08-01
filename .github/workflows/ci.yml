@@ -95,3 +95,10 @@ jobs:
           cd build
           & _build/binaries/io_static.exe --% --version
           & _build/binaries/io_static.exe --% ../libs/iovm/tests/correctness/run.io
+
+      - name: 'Upload Windows Build'
+        uses: actions/upload-artifact@v2
+        with:
+          name: windows-build
+          path: _build
+          retention-days: 5
