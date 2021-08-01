@@ -96,7 +96,7 @@ jobs:
           & _build/binaries/io_static.exe --% --version
           & _build/binaries/io_static.exe --% ../libs/iovm/tests/correctness/run.io
 
-      - name: 'Upload Windows Build'
+      - name: 'Upload Windows Build2'
         uses: actions/upload-artifact@v2
         with:
           name: windows-build
